@@ -13,6 +13,7 @@ import { IconLogOut } from '../icons/Logout';
 import { IconQuit } from '../icons/Quit';
 import { updateTrayIcon } from '../utils/comms';
 import { setAppearance } from '../utils/appearance';
+import { FieldNumber } from '../components/fields/Number';
 
 const isLinux = process.platform === 'linux';
 
@@ -108,12 +109,16 @@ export const SettingsRoute: React.FC = () => {
             }
           />
         )}
+        <FieldNumber
+          name="onClickMarkAsRead"
+          value={settings.refreshTime}
+          label="Refresh Time (seconds)"
+          onChange={(evt) => updateSetting('refreshTime', evt.target.value)}
+        />
       </div>
 
       <div className="flex justify-between items-center bg-gray-200 dark:bg-gray-darker py-4 px-8">
-        <small className="font-semibold">
-          Gitify v{app.getVersion()}
-        </small>
+        <small className="font-semibold">Gitify v{app.getVersion()}</small>
 
         <div>
           <button

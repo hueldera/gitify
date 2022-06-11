@@ -13,6 +13,7 @@ export interface SettingsState {
   markOnClick: boolean;
   openAtStartup: boolean;
   appearance: Appearance;
+  refreshTime: number;
 }
 
 export enum Appearance {

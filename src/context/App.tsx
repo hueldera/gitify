@@ -36,6 +36,7 @@ export const defaultSettings: SettingsState = {
   markOnClick: false,
   openAtStartup: false,
   appearance: Appearance.SYSTEM,
+  refreshTime: 60,
 };
 
 interface AppContextState {
@@ -89,9 +90,12 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     fetchNotifications(accounts, settings);
   }, [accounts.token, accounts.enterpriseAccounts.length]);
 
-  useInterval(() => {
-    fetchNotifications(accounts, settings);
-  }, 60000);
+  useInterval(
+    () => {
+      fetchNotifications(accounts, settings);
+    },
+    settings.refreshTime >= 5 ? settings.refreshTime * 1000 : 5000
+  );
 
   const updateSetting = useCallback(
     (name: keyof SettingsState, value: boolean | Appearance) => {

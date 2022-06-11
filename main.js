@@ -3,6 +3,10 @@ const { menubar } = require('menubar');
 const { autoUpdater } = require('electron-updater');
 const { onFirstRunMaybe } = require('./first-run');
 const path = require('path');
+const remote = require('@electron/remote/main');
+remote.initialize();
+
+app.setAppUserModelId('com.electron.gitify');
 
 const iconIdle = path.join(
   __dirname,
@@ -46,6 +50,8 @@ const menubarApp = menubar({
   browserWindow: browserWindowOpts,
   preloadWindow: true,
 });
+
+menubarApp.on('before-load', () => remote.enable(menubarApp.window.webContents));
 
 menubarApp.on('ready', () => {
   delayedHideAppIcon();

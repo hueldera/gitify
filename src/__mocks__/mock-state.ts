@@ -19,4 +19,5 @@ export const mockSettings: SettingsState = {
   markOnClick: false,
   openAtStartup: false,
   appearance: Appearance.SYSTEM,
+  refreshTime: 60,
 };

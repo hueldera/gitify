@@ -243,6 +243,32 @@ exports[`routes/Settings.tsx should render itself & its children 1`] = `
         </label>
       </div>
     </div>
+    <div
+      className="flex flex-row items-center mt-1 mb-3"
+    >
+      <div
+        className="text-sm"
+      >
+        <label
+          className="block tracking-wide text-grey-dark text-sm font-semibold mb-2"
+          htmlFor="onClickMarkAsRead"
+        >
+          Refresh Time (seconds)
+        </label>
+      </div>
+      <div
+        className="flex items-center h-5 ml-3"
+      >
+        <input
+          className="appearance-none block w-full dark:text-gray-800 bg-gray-100 border border-red rounded py-1.5 px-4 mb-2 focus:bg-gray-200 focus:outline-none"
+          id="onClickMarkAsRead"
+          min={5}
+          onChange={[Function]}
+          type="number"
+          value={60}
+        />
+      </div>
+    </div>
   </div>
   <div
     className="flex justify-between items-center bg-gray-200 dark:bg-gray-darker py-4 px-8"
